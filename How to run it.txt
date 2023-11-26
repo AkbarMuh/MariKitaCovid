@@ -1,0 +1,11 @@
+How to run Server
+Just copy to your cmd
+py main.py
+
+
+How to run Client
+Make sure you already have streamlit modul, if you havn't you can run pip install streamlit
+and copy this to your cmd
+streamlit run Client.py
+
+note: Make sure your open cmd in this location, if you have trouble just right click and select open in terminal
