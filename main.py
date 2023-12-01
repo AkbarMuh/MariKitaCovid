@@ -10,12 +10,15 @@ from flask import Flask, request, jsonify
 from xmlrpc.server import SimpleXMLRPCServer
 # Import class Thread dari modul threading untuk melakukan pemrograman paralel
 from threading import Thread
+# Import modul json untuk merandom angka
+import random
+
 
 # Fungsi untuk memeriksa validitas NIK
 def is_valid_nik(nik):
-    with open('NIK_test.txt', 'r') as file:
-        nik_list = file.read().replace('"','')
-    NIK = nik_list.split(',')
+    with open('NIK_Valid.txt', 'r') as file:
+        content = file.readlines()
+    NIK = [line.strip() for line in content]
     print(NIK)
     return nik in NIK
 
@@ -42,14 +45,35 @@ def save_report(report):
 
 # Fungsi untuk merespon dengan informasi penjemputan
 def respond_pickup_info():
-    # Menyimpan waktu saat ini ke dalam variabel current_time dan memformatnya menjadi string
-    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # Mendapatkan waktu saat ini dan memformatnya
+    current_time = datetime.now().strftime("%A, %d %B %Y %H:%M:%S")
+    
+    # Menyiapkan variasi nama tim yang kreatif
+    team_names = ['Pahlawan Kesehatan', 'Guardians of Well-being', 'Covid Crusaders', 'Health Protectors']
+    team_name = random.choice(team_names)
+    
+    # Menghasilkan jumlah orang penjemput secara acak antara 1 dan 5
+    jumlah_orang_penjemput = random.randint(1, 5)
+    
+    # Membuat pesan sambutan yang lebih personal, positif, dan humoris
+    greetings = ['Terimakasih atas dedikasinya!', 'Anda adalah pahlawan sejati!', 'Bersama kita melawan pandemi!']
+    greeting = random.choice(greetings)
+    
+    # Menambahkan elemen kejutan dan humor
+    surprises = ['Tetap semangat!', 'Ada hadiah kecil untuk Anda!', 'Kami sangat menghargai bantuan Anda.']
+    surprise = random.choice(surprises)
+    
+    jokes = ['Kenapa virus tidak suka pergi ke pesta? Karena selalu ada penanganan cepat!', 'Apa makanan favorit virus? Byte!', 'Bagaimana virus komputer pergi ke dokter? Dengan mencari solusi antivirus!']
+    joke = random.choice(jokes)
+    
     # Membuat objek dictionary response
     response = {
         'waktu': current_time,
-        'nama': 'Tim Penanganan Covid-19',
-        'jumlah_orang_penjemput': 2
+        'nama': team_name,
+        'jumlah_orang_penjemput': jumlah_orang_penjemput,
+        'pesan': f"{greeting} {surprise} 😄\n{Joke}"
     }
+    
     # Mereturn objek dictionary response
     return response
 

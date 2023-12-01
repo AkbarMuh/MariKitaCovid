@@ -1,15 +1,1 @@
 {"nik_pelapor": "1234567890123456", "nama_pelapor": "John Doe", "nama_terduga": "Jane Doe", "alamat_terduga": "Jl. Contoh No. 123", "gejala": "Demam, Batuk"}
-{"nik_pelapor": "1234567890123456", "nama_pelapor": "Alice Smith", "nama_terduga": "Bob Smith", "alamat_terduga": "Jl. Percobaan No. 456", "gejala": "Nyeri tenggorokan, Sesak napas"}
-{"nik_pelapor": "1234567890123456", "nama_pelapor": "Eva Johnson", "nama_terduga": "Chris Johnson", "alamat_terduga": "Jl. Uji Coba No. 789", "gejala": "Hilang indra penciuman"}
-{"nik_pelapor": "1234567890123456", "nama_pelapor": "John Doe", "nama_terduga": "Jane Doe", "alamat_terduga": "Jl. Contoh No. 123", "gejala": "Demam, Batuk"}
-{"nik_pelapor": "1234567890123456", "nama_pelapor": "John Doe", "nama_terduga": "Jane Doe", "alamat_terduga": "Jl. Contoh No. 123", "gejala": "Demam, Batuk"}
-{"nik_pelapor": "1234567890123456", "nama_pelapor": "awdaw", "nama_terduga": "awdawdaw", "alamat_terduga": "awdawdwad", "gejala": "awdawdawd"}
-{"nik_pelapor": "1234567890123456", "nama_pelapor": "334224", "nama_terduga": "234234234", "alamat_terduga": "234234234", "gejala": "23423432"}
-{"nik_pelapor": "1234", "nama_pelapor": "Jfiejek", "nama_terduga": "Jcdidjdi", "alamat_terduga": "jidj", "gejala": "Dydudjjxixi"}
-{"nik_pelapor": "1234", "nama_pelapor": "123", "nama_terduga": "123", "alamat_terduga": "13", "gejala": "13"}
-{"nik_pelapor": "12312", "nama_pelapor": "123123", "nama_terduga": "123123", "alamat_terduga": "123123", "gejala": "123133123"}
-{"nik_pelapor": "213131231", "nama_pelapor": "123123123", "nama_terduga": "12312312313", "alamat_terduga": "123123123", "gejala": "1231231321"}
-{"nik_pelapor": "1231323123", "nama_pelapor": "123123123", "nama_terduga": "12312312313", "alamat_terduga": "123123123", "gejala": ""}
-{"nik_pelapor": "213123", "nama_pelapor": "213213", "nama_terduga": "12313", "alamat_terduga": "123123", "gejala": " "}
-{"nik_pelapor": "123213", "nama_pelapor": "adawda", "nama_terduga": "wdawda", "alamat_terduga": "adwad", "gejala": "adawd"}
-{"nik_pelapor": "21312313", "nama_pelapor": "a123123123", "nama_terduga": "a12312312", "alamat_terduga": "a12312313", "gejala": "a123123123123"}
