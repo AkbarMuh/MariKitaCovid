@@ -72,6 +72,28 @@ def main():
         reports = get_all_reports()
         st.table(reports)
 
+    # Checkbox untuk menampilkan semua data
+    show_data = st.checkbox("Tampilkan Semua NIK Valid")
+
+    # Jika checkbox dicentang, munculkan input password
+    if show_data:
+        password = st.text_input("Masukkan Password untuk Lihat NIK Valid:", type="password")
+        
+        # Tombol untuk melihat semua NIK valid hanya muncul saat password dimasukkan
+        try:
+            rpc_response = rpc_client.check_password_and_get_valid_nik(password)
+            if st.button("Lihat Semua NIK Valid") and rpc_response[0]:
+                valid_nik_list = rpc_response[1]
+                if valid_nik_list is not None:
+                    st.success("Berikut adalah daftar NIK valid:")
+                    st.write(valid_nik_list)
+                else:
+                    st.error("Password benar, tetapi gagal membaca NIK Valid.")
+            elif not rpc_response[0] and password != "":
+                st.error("Password salah.")
+        except:
+            pass
+
 if __name__ == "__main__":
     # running main function
     main()

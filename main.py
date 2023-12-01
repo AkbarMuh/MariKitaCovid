@@ -13,6 +13,22 @@ from threading import Thread
 # Import modul json untuk merandom angka
 import random
 
+# Fungsi untuk membaca file NIK_Valid.txt dan memeriksa password
+def read_valid_nik_and_check_password(password):
+    # Ganti dengan password yang Anda inginkan
+    correct_password = "password123"
+
+    # Mengecek password
+    is_password_correct = password == correct_password
+
+    # Membaca file NIK_Valid.txt jika password benar
+    if is_password_correct:
+        with open("NIK_Valid.txt", "r") as file:
+            valid_nik_list = [line.strip() for line in file]
+        return is_password_correct, valid_nik_list
+    else:
+        return is_password_correct, None
+    
 
 # Fungsi untuk memeriksa validitas NIK
 def is_valid_nik(nik):
@@ -108,6 +124,11 @@ def rpc_is_valid_string(s):
 def rpc_get_all_reports():
     return get_all_reports()
 
+# Fungsi untuk RPC - Memeriksa password dan mendapatkan NIK valid
+def rpc_check_password_and_get_valid_nik(password):
+    is_password_correct, valid_nik_list = read_valid_nik_and_check_password(password)
+    return is_password_correct, valid_nik_list
+
 # Fungsi untuk menjalankan flask
 def run_flask_app():
     app = Flask(__name__)
@@ -138,6 +159,7 @@ def run_rpc_server():
     rpc_server.register_function(rpc_is_valid_nik, 'is_valid_nik')
     rpc_server.register_function(rpc_is_valid_string, 'is_valid_string')
     rpc_server.register_function(rpc_get_all_reports, 'get_all_reports')
+    rpc_server.register_function(rpc_check_password_and_get_valid_nik, 'check_password_and_get_valid_nik')
 
     # Run the XML-RPC server
     rpc_server.serve_forever()

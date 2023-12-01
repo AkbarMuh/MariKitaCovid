@@ -1,2 +1,3 @@
 {"nik_pelapor": "1234567890123456", "nama_pelapor": "John Doe", "nama_terduga": "Jane Doe", "alamat_terduga": "Jl. Contoh No. 123", "gejala": "Demam, Batuk"}{"nik_pelapor": "3456789012345678", "nama_pelapor": "qew", "nama_terduga": "qwe", "alamat_terduga": "qwe", "gejala": "wqe"}
 {"nik_pelapor": "3456789012345678", "nama_pelapor": "qew", "nama_terduga": "qwe", "alamat_terduga": "qwe", "gejala": "wqe"}
+{"nik_pelapor": "1234567890123456", "nama_pelapor": "qwe", "nama_terduga": "qe", "alamat_terduga": "qwe", "gejala": "wqe"}
