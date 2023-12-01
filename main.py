@@ -71,7 +71,7 @@ def respond_pickup_info():
         'waktu': current_time,
         'nama': team_name,
         'jumlah_orang_penjemput': jumlah_orang_penjemput,
-        'pesan': f"{greeting} {surprise} 😄\n{Joke}"
+        'pesan': f"{greeting} {surprise} 😄 {joke}"
     }
     
     # Mereturn objek dictionary response
