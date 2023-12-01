@@ -1,16 +1,30 @@
+# Import modul json untuk mengelola data dalam format JSON.
 import json
+# Import modul os agar bisa berkomunikasi dengan sistem operasi.
 import os
+# Import class datetime dari modul datetime untuk beroperasi dengan informasi waktu dan tanggal.
 from datetime import datetime
+# Import class Flask dari modul flask untuk membuat aplikasi web
 from flask import Flask, request, jsonify
+# Import class SimpleXMLRPCServer dari modul xmlrpc.server untuk membuat server XML-RPC
 from xmlrpc.server import SimpleXMLRPCServer
+# Import class Thread dari modul threading untuk melakukan pemrograman paralel
 from threading import Thread
 
 # Fungsi untuk memeriksa validitas NIK
 def is_valid_nik(nik):
-    return len(nik) >= 4 and nik.isdigit()
+    with open('NIK_test.txt', 'r') as file:
+        nik_list = file.read().replace('"','')
+    NIK = nik_list.split(',')
+    print(NIK)
+    return nik in NIK
 
+# Fungsi untuk memeriksa format string yang valid
 def is_valid_string(s):
+    # Mereturn hasil true atau false berdasarkan kondisi
+    # Memeriksa apakah karakter pertama dari string 's' adalah huruf.
     return s.strip() and s[0].isalpha()
+
 # Fungsi untuk menampilkan semua data dari file
 def get_all_reports():
     with open('laporan_covid.txt', 'r') as file:
@@ -20,34 +34,49 @@ def get_all_reports():
 
 # Fungsi untuk menyimpan laporan dalam file
 def save_report(report):
+    # Membuka file 'laporan_covid.txt' dengan mode 'a' atau append
     with open('laporan_covid.txt', 'a') as file:
+        # Menggunakan json.dumps untuk mengonversi objek report menjadi string JSON
+        # kemudian menuliskannya ke dalam file, diikuti dengan karakter \n untuk membuat baris baru
         file.write(json.dumps(report) + '\n')
 
 # Fungsi untuk merespon dengan informasi penjemputan
 def respond_pickup_info():
+    # Menyimpan waktu saat ini ke dalam variabel current_time dan memformatnya menjadi string
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # Membuat objek dictionary response
     response = {
         'waktu': current_time,
         'nama': 'Tim Penanganan Covid-19',
         'jumlah_orang_penjemput': 2
     }
+    # Mereturn objek dictionary response
     return response
 
 # Fungsi untuk menghandle laporan dari client
 def handle_report(data):
+    # Menggunakan try except untuk antisipasi Error
     try:
+        # Memuat data JSON yang diterima dan kemudian disimpan ke variabel report
         report = json.loads(data)
+        # Simpan report dengan fungsi save_report()
         save_report(report)
+        # Memanggil fungsi respond_pickup_info() untuk membuat response
+        # dan menyimpannya ke dalam variabel response
         response = respond_pickup_info()
+    # Block kode except untuk menangani error jika data JSON tidak valid
     except json.JSONDecodeError:
+        # Membuat response jika JSON tidak valid
         response = {'message': 'Format JSON tidak valid.'}
     
+    # Mereturn response sebagai string JSON
     return json.dumps(response)
 
 # Fungsi untuk RPC - Validasi NIK
 def rpc_is_valid_nik(nik):
     return is_valid_nik(nik)
 
+# Fungsi untuk RPC - Validasi Inputan String
 def rpc_is_valid_string(s):
     return is_valid_string(s)
 
@@ -55,9 +84,10 @@ def rpc_is_valid_string(s):
 def rpc_get_all_reports():
     return get_all_reports()
 
+# Fungsi untuk menjalankan flask
 def run_flask_app():
     app = Flask(__name__)
-
+    
     @app.route('/lapor', methods=['POST'])
     def lapor():
         data = request.data.decode('utf-8')

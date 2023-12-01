@@ -6,10 +6,6 @@ import requests
 # Create an XML-RPC client
 rpc_client = xmlrpc.client.ServerProxy("http://localhost:8000")
 
-# Function to check if a string has valid characters
-# def is_valid_string(s):
-#     return s.strip() and s[0].isalpha()
-
 # Membuat function bernama post_report dengan beberapa parameter seperti NIK pelapor
 # nama pelapor, nama terduga, alamat terduga, gejala terduga
 def post_report(nik_pelapor, nama_pelapor, nama_terduga, alamat_terduga, gejala):
